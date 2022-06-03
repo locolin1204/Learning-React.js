@@ -23,9 +23,11 @@ You may try out Tic Tac Toe [here](https://locolin1204.github.io/Learning-React.
 ## CSS Styling 
 
 Below is the original UI of the tutorial.
+
 <img src="./tic-tac-toe/readme-images/original-tictactoe.png" width = "450">
 
 And the following is the UI after I made some changes!
+
 <img src="./tic-tac-toe/readme-images/new-tictactoe-start.png" width = "450">
 <img src="./tic-tac-toe/readme-images/new-tictactoe-end.png" width = "450">
 
