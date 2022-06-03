@@ -124,11 +124,20 @@ class Game extends React.Component {
       status = "This game is a draw!";
       playerStatus = false;
     }
+
+    let winOrDraw;
+    if(winner) winOrDraw = "display-winner";
+    else if(this.state.stepNumber < 9) winOrDraw = null;
+    else winOrDraw = "display-draw";
+  
+    console.log(winOrDraw);
     return (
       <div className="game-main">
-        <div className={`${winner && "display-winner"} status ${this.state.stepNumber >= 9 && "display-draw"}`}>
+      <div className="status-div">
+        <div className={`${winOrDraw} status`}>
         {status} 
         <div className={`${playerStatus && "player-status"} next-player`}>{playerStatus}</div>
+      </div>
         </div>
           <div className="game">
             <div className="game-board">

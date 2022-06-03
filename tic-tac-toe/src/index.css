@@ -5,7 +5,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 20px;
-  
+  transform: scale(1.5);
+  transform-origin: top;
 }
 
 ol, ul {
@@ -92,14 +93,6 @@ button {
   padding: 5px 10px 5px 10px;
 }
 
-/* .time-button:focus{
-  background: #e2e2e2;
-}
-
-.time-button:active{
-  font-weight: bold;
-} */
-
 .order-button {
   background: #777777;
   color: white;
@@ -135,6 +128,12 @@ button:hover {
   text-align: center;
 }
 
+
+.status-div{
+  height: 2.5em;
+  margin-bottom: 0.5em;
+}
+
 .next-player{
   font-weight: 700;
 }
@@ -150,7 +149,6 @@ button:hover {
 
 .display-draw{
   background-color: rgb(160, 208, 255);
-
 }
 
 .winner-squares{
