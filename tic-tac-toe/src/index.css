@@ -6,142 +6,158 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 20px;
   
-  }
-  
-  ol, ul {
-    padding-left: 30px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-  
-  .game-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .status {
-    display:inline-block;
-    padding: 5px 10px 5px 10px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    background-color: #ededed;
-    vertical-align: middle;
-    border-radius: 9999px;
-  }
+}
 
-  .square {
-    background: #777777;
-    border: 1.5px solid rgb(255, 255, 255);
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-    color: white;
-    border-radius: 20%;
-  }
-  
-  .square:hover{
-    background-color: #b8b8b8;
-  }
+ol, ul {
+  padding-left: 30px;
+}
 
-  .square:focus {
-    outline: none;
-  }
-  
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .game {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    min-width: 385px;
-  }
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
 
-  .game-info {
-    min-width: 275px;
-    margin-left: 1em;
-    margin-right: 1em;
-  }
+.game-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .game-board {
-    min-width: 110px;
-    margin-left: 40%;
-  }
+.status {
+  display:inline-block;
+  padding: 5px 10px 5px 10px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background-color: #ededed;
+  vertical-align: middle;
+  border-radius: 9999px;
+}
 
-  .move-elements {
-    padding-top: 0.2em;
-  }
+.square {
+  background: #777777;
+  border: 1.5px solid rgb(255, 255, 255);
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+  color: white;
+  border-radius: 20%;
+}
 
-  button {
-    background-color: #ededed;
-    border: none;
-    border-radius: 15px;
-    padding: 5px 10px 5px 10px;
-  }
+.square:hover{
+  background-color: #b8b8b8;
+}
 
-  .order-button {
-    background: #777777;
-    color: white;
-    font-weight: 600;
-    width: 7.5em;
-    margin-bottom: 0.3em;
-  }
+.square:focus {
+  outline: none;
+}
 
-  .order-button:hover{
-    background-color: #989898;
-  }
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
 
-  li{
-    padding: 0.1em;
-  }
-  button:hover {
-    background-color: #f6f6f6;
-    cursor: pointer;
-  }
-  
-  .player-status, .coordinates{
-    font-weight: 600;
-    color: white;
-    padding: 0.15em 0.25em 0.15em 0.25em;
-    /* padding: 1.5px 2.5px 1.5px 2.5px; */
-    border-radius: 25%;
-    background-color: #777777;
-  }
-  
-  .player-status{
-    display: inline-block;
-    width: 1em;
-    text-align: center;
-  }
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 385px;
+}
 
-  .next-player{
-    font-weight: 700;
-  }
+.game-info {
+  min-width: 275px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
 
-  .coordinates{
-    background-color: #f39a71;
-    border-radius: 7px;
-  }
+.game-board {
+  min-width: 110px;
+  margin-left: 40%;
+}
 
-  .display-winner{
-    background-color: rgb(178, 250, 127);
-  }
+.move-elements {
+  padding-top: 0.2em;
+}
 
-  .display-draw{
-    background-color: rgb(160, 208, 255);
+button {
+  background-color: #ededed;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+}
 
-  }
+/* .time-button:focus{
+  background: #e2e2e2;
+}
 
+.time-button:active{
+  font-weight: bold;
+} */
+
+.order-button {
+  background: #777777;
+  color: white;
+  font-weight: 600;
+  width: 7.5em;
+  margin-bottom: 0.3em;
+}
+
+.order-button:hover{
+  background-color: #989898;
+}
+
+li{
+  padding: 0.1em;
+}
+button:hover {
+  background-color: #f6f6f6;
+  cursor: pointer;
+}
+
+.player-status, .coordinates{
+  font-weight: 600;
+  color: white;
+  padding: 0.15em 0.25em 0.15em 0.25em;
+  /* padding: 1.5px 2.5px 1.5px 2.5px; */
+  border-radius: 25%;
+  background-color: #777777;
+}
+
+.player-status{
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+}
+
+.next-player{
+  font-weight: 700;
+}
+
+.coordinates{
+  background-color: #f39a71;
+  border-radius: 7px;
+}
+
+.display-winner{
+  background-color: rgb(178, 250, 127);
+}
+
+.display-draw{
+  background-color: rgb(160, 208, 255);
+
+}
+
+.winner-squares{
+  background-color: rgb(178, 250, 127);
+  color:rgb(73, 111, 46);
+}
+
+.winner-squares:hover{
+  background-color: rgb(214, 255, 185);
+}

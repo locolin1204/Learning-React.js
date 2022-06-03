@@ -4,17 +4,20 @@ import './index.css';
 
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button className = {props.className} onClick={props.onClick}>
       {props.value}
     </button>
   );
 }
 
 class Board extends React.Component {
+
   renderSquare(i) {
-    return <Square value = {this.props.squares[i]}
+    return (<Square value = {this.props.squares[i]}
                   onClick = {()=> this.props.onClick(i)}
-            />;
+                  key = {i}
+                  className = {`${this.props.winnerSquares.includes(i) && "winner-squares"} square`}
+            />);
   }
 
   render() {
@@ -23,7 +26,7 @@ class Board extends React.Component {
 
     const squareRows = elements.map(() => {
       return (
-        <div className="board-row">
+        <div className="board-row" key = {startNum}>
           {elements.map(() => {return (this.renderSquare(startNum++))})}
         </div>
       )
@@ -50,58 +53,70 @@ class Game extends React.Component {
       ascend: false,
     }
   }
-
+  // function that generate the whole description
+  fullDesc(historyObj){
+    return(
+      <div>
+        {historyObj.desc}
+        <span className={`${historyObj.notFirstMove && "player-status"}`}>{historyObj.curPlayer}</span>
+        {historyObj.desc2}
+        <span className={`${historyObj.notFirstMove && "coordinates"}`}>{`${historyObj.row} ${historyObj.col}`}</span>
+      </div>
+    )
+  }
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
     
     const moves = history.map((step,move) => {
-      let row = Math.floor(history[move].click/3); 
-      let col = history[move].click%3;
-      let curPlayer = move % 2 ? "X" : "O";
-      let desc, desc2;
-      let notFirstMove = false;
-      if(move){
-        notFirstMove = true;
-        // desc = `Go to move # ${move}, ${curPlayer} placed at (${row}, ${col})`;
-        desc = `Go to move #${move} `;
-        desc2 = ` placed at `;
-        row = `${row},`
-      } else {
-        desc = "Go to game start";
-        desc2 = "";
-        curPlayer = "";
-        row = "";
-        col = "";
+      const historyObj = {
+        row: Math.floor(history[move].click/3),
+        col: history[move].click%3,
+        curPlayer: move % 2 ? "X" : "O",
+        desc: "",
+        desc2: "",
+        notFirstMove: false,
       }
-      // const desc = move ?
-      //   `Go to move # ${move}, ${curPlayer} placed at (${row}, ${col})`:
-      //   "Go to game start";
+      if(move){
+        historyObj.notFirstMove = true;
+        historyObj.desc = `Go to move #${move} `;
+        historyObj.desc2 = ` placed at `;
+        historyObj.row = `${historyObj.row},`
+      } else {
+        historyObj.desc = "Go to game start";
+        historyObj.desc2 = "";
+        historyObj.curPlayer = "";
+        historyObj.row = "";
+        historyObj.col = "";
+      }
       return (
         <div className="move-elements" key={move}>
             <button
               className="time-button"
-              onClick={() => {
-                  this.jumpTo(move);
-                }
-              }> 
-                {desc}
-                <span className={`${notFirstMove && "player-status"}`}>{curPlayer}</span>
-                {desc2}
-                <span className={`${notFirstMove && "coordinates"}`}>{`${row} ${col}`}</span>
+              onClick={() => {this.jumpTo(move)}}
+              > 
+                {(move === this.state.stepNumber) ?
+                <b>
+                {this.fullDesc(historyObj)}
+                </b> : 
+                <div>
+                {this.fullDesc(historyObj)}
+                </div>}
               </button>
         </div>
       );
     });
 
     const ascend = this.state.ascend;
+    const winner = calculateWinner(current.squares);
 
     let status;
     let playerStatus;
+    let winSquares = [];
     if(winner){
       status = "Winner is ";
-      playerStatus = winner;
+      playerStatus = winner.winner;
+      winSquares = winner.winSquares;
     } else if(this.state.stepNumber < 9) {
       status = "Next player is ";
       playerStatus = (this.state.xIsNext ? "X" : "O");
@@ -120,6 +135,7 @@ class Game extends React.Component {
               <Board 
                 squares = {current.squares}
                 onClick = {(i)=> this.handleClick(i)}
+                winnerSquares = {winSquares}
               />
             </div>
             <div className="game-info">
@@ -178,7 +194,7 @@ function calculateWinner(squares){
   for (let i = 0; i < lines.length; i++){
     const [a,b,c] = lines[i];
     if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
-      return squares[a];
+      return {winner: squares[a], winSquares: lines[i]};
     }
   }
   return null;
