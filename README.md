@@ -6,7 +6,7 @@ A repository recording my journey of learning React.js
 
 It is still working in progress.
 
-I made this project based on the [official React.js tutorial](https://reactjs.org/tutorial/tutorial.html)
+I made this project based on the [official React.js tutorial](https://reactjs.org/tutorial/tutorial.html).
 
 You may try out Tic Tac Toe [here](https://locolin1204.github.io/Learning-React.js).
 
