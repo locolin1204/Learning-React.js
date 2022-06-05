@@ -31,6 +31,7 @@ And the following is the UI after I made some changes!
 <img src="./tic-tac-toe/readme-images/new-tictactoe-start.png" width = "450">
 <img src="./tic-tac-toe/readme-images/new-tictactoe-end.png" width = "450">
 
+## Framer Motion Animations
 
 # my-app
 
